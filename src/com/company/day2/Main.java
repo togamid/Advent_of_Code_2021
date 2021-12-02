@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         List<String> inputString = Util.loadFile("src/com/company/day2/input.txt");
+        /* Aufgabe 1
         int depth = 0;
         int pos = 0;
         for(String line : inputString) {
@@ -22,6 +23,31 @@ public class Main {
                     break;
                 case "forward":
                     pos += amount;
+                    break;
+                default:
+                    System.out.println("invalid line " + line);
+            }
+        }
+        System.out.println("depth: " + depth);
+        System.out.println("pos " + pos);
+        System.out.println("result " + (depth * pos));
+         */
+        int depth = 0;
+        int pos = 0;
+        int aim = 0;
+        for(String line : inputString) {
+            String[] array = line.split(" ");
+            int amount = Integer.parseInt(array[1]);
+            switch (array[0]) {
+                case "up":
+                    aim -=amount;
+                    break;
+                case "down":
+                    aim += amount;
+                    break;
+                case "forward":
+                    pos += amount;
+                    depth += aim*amount;
                     break;
                 default:
                     System.out.println("invalid line " + line);
