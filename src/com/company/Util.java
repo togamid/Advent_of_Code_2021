@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,5 +36,9 @@ public class Util {
 
     public static List<Integer> parseInt(List<String> strings) {
         return strings.stream().map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    public static List<Integer> parseInt(String[] strings) {
+        return parseInt(Arrays.asList(strings));
     }
 }
