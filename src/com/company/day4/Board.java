@@ -6,6 +6,7 @@ import java.util.List;
 public class Board {
     private Integer[][] numbers = new Integer[5][5];
     private boolean[][] checked = new boolean[5][5];
+    boolean hasWon = false;
 
     public void loadBoard(List<String> input, int firstLine) {
         for(int i = 0; i<5; i++) {

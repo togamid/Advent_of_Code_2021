@@ -23,10 +23,14 @@ public class Main {
     for(int number : randomNumbers) {
         for(Board board : boards) {
             board.markNumber(number);
-            if(board.checkBoard()) {
-                System.out.println("Result: " + board.getSumUnmarked() * number);
-                return;
-            }
+            board.hasWon = board.checkBoard();
+        }
+        if(boards.size() > 1) {
+            boards.removeIf(board -> board.hasWon);
+        }
+        else if(boards.get(0).hasWon) {
+            System.out.println("Result: " + boards.get(0).getSumUnmarked() * number);
+            return;
         }
     }
 
