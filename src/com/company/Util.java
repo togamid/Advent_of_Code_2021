@@ -41,4 +41,8 @@ public class Util {
     public static List<Integer> parseInt(String[] strings) {
         return parseInt(Arrays.asList(strings));
     }
+
+    public static Integer[] parseArrayInt(String[] strings) {
+        return Arrays.asList(strings).stream().map(Integer::parseInt).toArray(Integer[]::new);
+    }
 }
