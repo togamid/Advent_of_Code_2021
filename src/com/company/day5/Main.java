@@ -3,6 +3,7 @@ package com.company.day5;
 import com.company.Util;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ public class Main {
                 .map(string -> string.split(","))
                 .map((Util::parseArrayInt))
                 .map(integers -> new Point[]{new Point(integers[0], integers[1]), new Point(integers[2], integers[3])})
+                .peek(points -> Arrays.sort(points, (i, j) -> Integer.compare(i.x, j.x)))
                 .collect(Collectors.toList());
         Integer maxX = lines.stream()
                 .map(points -> List.of(points[0].x, points[1].x))
@@ -36,6 +38,20 @@ public class Main {
             else if(points[0].y == points[1].y) {
                 for(int i = Math.min(points[0].x, points[1].x); i<= Math.max(points[0].x, points[1].x); i++ ) {
                     map[i][points[0].y]++;
+                }
+            }
+            else if(points[0].y < points[1].y) {
+                int y = points[0].y;
+                for(int x = points[0].x; x <= points[1].x; x++ ) {
+                    map[x][y]++;
+                    y++;
+                }
+            }
+            else {
+                int y = points[0].y;
+                for(int x = points[0].x; x <= points[1].x; x++ ) {
+                    map[x][y]++;
+                    y--;
                 }
             }
         }
