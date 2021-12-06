@@ -2,6 +2,7 @@ package com.company.day6;
 
 import com.company.Util;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -27,5 +28,20 @@ public class Main {
         }
 
         System.out.println("Result: " + (Long) fish.values().stream().mapToLong(aLong -> aLong).sum());
+
+        // Einfache/schönere Lösung
+        long[] fishArray = new long[9];
+        input.forEach(integer ->  fishArray[integer]++);
+
+        for(int i = 0; i < 256; i++) {
+            long buffer = fishArray[0];
+            for(int j = 1; j<fishArray.length; j++) {
+                fishArray[j-1] = fishArray[j];
+            }
+            fishArray[6] += buffer;
+            fishArray[8] = buffer;
+        }
+
+        System.out.println(Arrays.stream(fishArray).sum());
     }
 }
