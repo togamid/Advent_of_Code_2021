@@ -2,11 +2,7 @@ package com.company.day11;
 
 import com.company.Util;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class Main {
     private static long flashCount = 0;
@@ -49,6 +45,7 @@ public class Main {
             }
 
         }
+        System.out.println("Flash Count: " +flashCount);
     }
     private static void output(Integer[][] array){
         for(int y = 0; y < array.length; y ++) {
