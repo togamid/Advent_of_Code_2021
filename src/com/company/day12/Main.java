@@ -15,10 +15,8 @@ public class Main {
     List<String> startPath = new ArrayList<>(List.of("start"));
     continuePath("start", startPath, false);
     System.out.println("Number of Paths: " + allPaths.size());
-
-
-
     }
+    
     // only works, if there are no possible circular paths in the dataset
     private static void continuePath(String currentCave, List<String> path, Boolean visitedSmallCaveTwice) {
         Set<String> possiblePassages = passages.get(currentCave);
